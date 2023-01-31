@@ -1,8 +1,10 @@
 a {
   text-decoration: none;
 }
-td, th,
-span, strong {
+td,
+th,
+span,
+strong {
   color: inherit;
 }
 /* %typo-body */
@@ -17,7 +19,7 @@ html {
   background-color: rgb(var(--tone-gray-000));
 }
 hr {
-  background-color: rgb(var(--tone-gray-200));
+  background-color: var(--token-color-surface-interactive-active);
 }
 button {
   background-color: var(--transparent);
@@ -69,7 +71,9 @@ html {
 html {
   box-sizing: border-box;
 }
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 fieldset {
@@ -85,8 +89,8 @@ hr {
   border: none;
   display: block;
 }
-input[type="checkbox"],
-input[type="radio"] {
+input[type='checkbox'],
+input[type='radio'] {
   vertical-align: baseline;
 }
 td,
