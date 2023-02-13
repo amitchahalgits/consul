@@ -16,12 +16,23 @@ const (
 	StaticClientServiceName  = "static-client"
 )
 
+type Checks struct {
+	Name string
+	TTL  string
+}
+
+type Port struct {
+	Port int
+}
+
 type ServiceOpts struct {
 	Name     string
 	ID       string
 	Meta     map[string]string
 	HTTPPort int
 	GRPCPort int
+	Checks   []Checks
+	Connect  map[string]*Port
 }
 
 func CreateAndRegisterStaticServerAndSidecar(node libcluster.Agent, serviceOpts *ServiceOpts) (Service, Service, error) {
