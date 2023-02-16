@@ -343,7 +343,7 @@ function get_upstream_endpoint {
   run curl -s -f "http://${HOSTPORT}/clusters?format=json"
   [ "$status" -eq 0 ]
   echo "$output" | jq --raw-output "
-.cluster_statuses[]e
+.cluster_statuses[]
 | select(.name|startswith(\"${CLUSTER_NAME}\"))"
 }
 
@@ -353,8 +353,6 @@ function get_upstream_endpoint_in_status_count {
   local HEALTH_STATUS=$3
   run curl -s -f "http://${HOSTPORT}/clusters?format=json"
   [ "$status" -eq 0 ]
-
-  echo $out
   echo "$output" | jq --raw-output "
 .cluster_statuses[]
 | select(.name|startswith(\"${CLUSTER_NAME}\"))

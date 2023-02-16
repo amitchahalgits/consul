@@ -40,7 +40,7 @@ load helpers
 @test "s1 upstream should have 1 unhealthy endpoints for test.s2" {
   assert_upstream_has_endpoints_in_status 127.0.0.1:19000 test.s2 UNHEALTHY 1
 }
-, 
+
 @test "s1 upstream should be able to connect to s2" {
   assert_expected_fortio_name s2
 }

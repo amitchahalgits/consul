@@ -79,7 +79,7 @@ func TestTrafficManagement_ServiceResolverSubsetOnlyPassing(t *testing.T) {
 		_, serverAdminPort := serverConnectProxy.GetAdminAddr()
 		_, serverAdminPortV1 := serverConnectProxyV1.GetAdminAddr()
 
-		// TO-DO:  Upgrade cluster, restart sidecars then begin service traffic validation 
+		// TO-DO:  Upgrade cluster, restart sidecars then begin service traffic validation
 
 		// force static-server-v1 into a warning state
 		err = cluster.Agents[0].GetClient().Agent().UpdateTTL("service:static-server-v1", "", "warn")
