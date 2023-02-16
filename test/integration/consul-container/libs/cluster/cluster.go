@@ -600,6 +600,17 @@ func (c *Cluster) ConfigEntryWrite(entry api.ConfigEntry) error {
 	return err
 }
 
+func (c *Cluster) ConfigEntryDelete(entry api.ConfigEntry) error {
+	client, _ := c.GetClient(nil, true)
+
+	entries := client.ConfigEntries()
+	_, err := entries.Delete(entry.GetKind(), entry.GetName(), nil)
+	if err != nil {
+		return fmt.Errorf("error deleting config entry: %v", err)
+	}
+	return err
+}
+
 func extractSecretIDFrom(tokenOutput string) (string, error) {
 	lines := strings.Split(tokenOutput, "\n")
 	for _, line := range lines {

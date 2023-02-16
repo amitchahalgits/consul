@@ -70,7 +70,11 @@ func AssertUpstreamEndpointStatus(t *testing.T, adminPort int, clusterName, heal
 		filter := fmt.Sprintf(`.cluster_statuses[] | select(.name|contains("%s")) | [.host_statuses[].health_status.eds_health_status] | [select(.[] == "%s")] | length`, clusterName, healthStatus)
 		results, err := utils.JQFilter(clusters, filter)
 		require.NoErrorf(r, err, "could not found cluster name %s", clusterName)
-		require.Equal(r, count, len(results))
+
+		resultToString := strings.Join(results, " ")
+		result, err := strconv.Atoi(resultToString)
+		assert.NoError(t, err)
+		require.Equal(r, count, result)
 	})
 }
 
